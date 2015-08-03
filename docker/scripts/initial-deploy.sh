@@ -42,8 +42,8 @@ composer install
 # Yii migate
 ./yii migrate --interactive=0
 ./yii migrate --interactive=0 --migrationPath=@vendor/mobilejazz/yii2-oauth2-server/migrations
-./yii migrate --migrationPath=@yii/rbac/migrations
+./yii migrate --interactive=0 --migrationPath=@yii/rbac/migrations
 
 # Add oauth client
 mysql -uroot -p${password} -e "USE ${app}; DELETE FROM oauth_clients;";
-mysql -uroot -p${password} -e "INSERT INTO oauth_clients('client_id', 'client_secret', 'redirect_uri', 'grant_types') VALUES ('${oauth_app}', '${oauth_pass}', 'http://${app}', 'client_credentials password refresh_token')"
+mysql -uroot -p${password} -e "USE ${app}; INSERT INTO oauth_clients('client_id', 'client_secret', 'redirect_uri', 'grant_types') VALUES ('${oauth_app}', '${oauth_pass}', 'http://${app}', 'client_credentials password refresh_token')"
