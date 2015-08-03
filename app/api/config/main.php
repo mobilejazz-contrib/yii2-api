@@ -69,6 +69,7 @@
                     ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
 					'POST /users/reset-password' => 'user/reset-password',
 					'POST oauth2/<action:\w+>' => 'oauth2/default/<action>',
+					'GET me' => 'user/me',
                 ],
             ],
 			'urlManagerFrontEnd' => [
