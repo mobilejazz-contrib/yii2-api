@@ -46,4 +46,4 @@ composer install
 
 # Add oauth client
 mysql -uroot -p${password} -e "USE ${app}; DELETE FROM oauth_clients;";
-mysql -uroot -p${password} -e "USE ${app}; INSERT INTO oauth_clients('client_id', 'client_secret', 'redirect_uri', 'grant_types') VALUES ('${oauth_app}', '${oauth_pass}', 'http://${app}', 'client_credentials password refresh_token')"
+mysql -uroot -p${password} -e "USE ${app}; INSERT INTO oauth_clients (client_id, client_secret, redirect_uri, grant_types, scope, user_id) VALUES ('${oauth_app}', '${oauth_pass}', 'http://${app}', 'client_credentials password refresh_token', NULL, NULL);"

@@ -23,7 +23,7 @@ sleep 10 #We wait some time for mysql to start
 docker exec -i -t $image_name mysqladmin -u root -pAdmin2015 password $mysql_password
 
 #Deploy app
-docker exec -i -t $image_name /app/docker/scripts/initial-deploy.sh $image_name $mysql_password $3 $4 $5 $6 $7
+docker exec -i -t $image_name /app/docker/scripts/initial-deploy.sh "$image_name" "$mysql_password" "$3" "$4" "$5" "$6" "$7"
 
 echo "docker exec -i -t ${image_name} /bin/bash" > docker/ssh
 chmod 700 docker/ssh
