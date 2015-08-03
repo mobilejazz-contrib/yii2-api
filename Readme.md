@@ -6,9 +6,9 @@ This generator will create a Yii application with the following features:
 
 * A docker machine with apache and mysql already setup
 * A Yii application with the following components
-	* api -> the REST Api
-	* backend -> the admin site
-	* fronted -> the public site
+	* api -> the REST Api (http://<docker_ip>/api)
+	* backend -> the admin site (http://<docker_ip>/admin)
+	* fronted -> the public site (http://<docker_ip>/)
 * OAuth2 server
 * i18 support
 * Mandrill for sending emails
@@ -17,6 +17,8 @@ This generator will create a Yii application with the following features:
 	* User admin backoffice
 	* Backend protected by roles
 	* Password reset features with email sending via Mandrill (also available in the Rest API)
+* XDebug configured in the server
+* Adminer installed (http://<docker_ip>/adminer) *Note: Mysql root access is disabled*
 
 ## Installation
 
