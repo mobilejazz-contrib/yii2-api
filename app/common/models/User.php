@@ -1,13 +1,9 @@
 <?php
 namespace common\models;
 
-use common\components\TSActiveRecord;
+use common\components\TimeStampActiveRecord;
 use OAuth2\Storage\UserCredentialsInterface;
 use Yii;
-use yii\base\NotSupportedException;
-use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
-use yii\db\Expression;
 use yii\web\IdentityInterface;
 
 /**
@@ -26,7 +22,7 @@ use yii\web\IdentityInterface;
  * @property integer $updated_at
  * @property string $password password
  */
-class User extends TSActiveRecord implements IdentityInterface, UserCredentialsInterface
+class User extends TimeStampActiveRecord implements IdentityInterface, UserCredentialsInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
@@ -155,7 +151,14 @@ class User extends TSActiveRecord implements IdentityInterface, UserCredentialsI
     {
 		$user = \mobilejazz\yii2\oauth2server\models\OauthAccessTokens::find()->where(["access_token"=>$token])->one();
 		if ($user)
-			return static::findOne(["id"=>$user->user_id]);
+		{
+			//If we have client_credentials enabled, we need to return a fake user to allow access
+			if (isset($user->client_id) && $user->user_id==null)
+			{
+				return new User();
+			}
+			return static::findOne (["id" => $user->user_id]);
+		}
 
 		return null;
     }

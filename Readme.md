@@ -19,6 +19,7 @@ This generator will create a Yii application with the following features:
 	* Password reset features with email sending via Mandrill (also available in the Rest API)
 * XDebug configured in the server
 * Adminer installed (http://<docker_ip>/adminer) *Note: Mysql root access is disabled*
+* Gii is available here: http://<docker_ip>/admin/gii
 
 ## Installation
 

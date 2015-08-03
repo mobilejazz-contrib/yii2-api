@@ -13,7 +13,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii;
 
-class TSActiveRecord extends ActiveRecord
+class TimeStampActiveRecord extends ActiveRecord
 {
 	/**
 	 * @inheritdoc

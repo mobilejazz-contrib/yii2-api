@@ -98,10 +98,10 @@
 						}
 
 						//Create a new structure
-						$response->data = [
+						/*$response->data = [
 							'success' => $response->isSuccessful,
 							'data' => $response->data,
-						];
+						];*/
 					}
 				},
 			],
