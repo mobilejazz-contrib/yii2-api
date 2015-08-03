@@ -76,6 +76,10 @@
 			APIErrors::err(APIErrors::ERROR_UNKNOWN);
 		}
 
+		public function actionMe ()
+		{
+			return Yii::$app->user->getIdentity();
+		}
 
 	}
 
