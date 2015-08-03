@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ "$#" -ne 6 ]; then
+if [ "$#" -ne 7 ]; then
     echo "Illegal number of parameters. You should use:"
     echo "  ./build <image_name> <mysql_root_password> <mysql_app_password> <oauth_client_name> <oaut_client_pass> <mandrill_key> <app_name>"
     exit
