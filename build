@@ -1,0 +1,29 @@
+#!/bin/bash
+if [ "$#" -ne 6 ]; then
+    echo "Illegal number of parameters. You should use:"
+    echo "  ./build <image_name> <mysql_root_password> <mysql_app_password> <oauth_client_name> <oaut_client_pass> <mandrill_key> <app_name>"
+    exit
+fi
+
+OS=`uname`
+
+image_name=$1
+mysql_password=$3
+
+
+#Build docker image
+docker build -t $image_name docker
+
+#Run docker image
+PWD=`pwd`
+docker run -d -v $PWD:/app -p 80:80 -p 3306:3306 --name $image_name $image_name
+
+# Change mysql password
+sleep 10 #We wait some time for mysql to start
+docker exec -i -t $image_name mysqladmin -u root -pAdmin2015 password $mysql_password
+
+#Deploy app
+docker exec -i -t $image_name /app/docker/scripts/initial-deploy.sh $image_name $mysql_password $3 $4 $5 $6 $7
+
+echo "docker exec -i -t ${image_name} /bin/bash" > docker/ssh
+chmod 700 docker/ssh
