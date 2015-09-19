@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m150803_155200_user_profile extends Migration
+class m150919_015100_user_profile extends Migration
 {
     public function up()
     {
@@ -15,8 +15,6 @@ class m150803_155200_user_profile extends Migration
         $this->createTable('user_profile', [
             'id' => Schema::TYPE_PK,
             'about' => Schema::TYPE_STRING,
-			'notify_new_jibbs' => Schema::TYPE_BOOLEAN ,
-			'notify_jibb_update' => Schema::TYPE_BOOLEAN ,
             'created_at' => Schema::TYPE_DATETIME . ' NULL',
             'updated_at' => Schema::TYPE_DATETIME . ' NULL',
         ], $tableOptions);

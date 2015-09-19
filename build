@@ -16,7 +16,7 @@ docker run -d -v $PWD:/app -p 80:80 -p 3306:3306 --name $image_name $image_name
 
 # Change mysql password
 sleep 10 #We wait some time for mysql to start
-docker exec -i -t $image_name mysqladmin -u root -pAdmin2015 password $mysql_password
+docker exec -i -t $image_name mysqladmin -u root -pAdmin2015 password $mysql_root_password
 
 echo "docker exec -i -t ${image_name} /bin/bash" > docker/ssh
 chmod 700 docker/ssh
