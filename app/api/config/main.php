@@ -37,14 +37,6 @@
 
             ],
         ],
-		'bootstrap' => [
-			[
-				'class' => 'yii\filters\ContentNegotiator',
-				'languages' => [
-					'en',
-				],
-			],
-		],
         'components' => [
             'user' => [
                 'identityClass' => 'common\models\User',

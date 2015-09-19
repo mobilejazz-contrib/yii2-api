@@ -30,7 +30,7 @@ sed -i "s/%parse_masterkey%/${parse_masterkey}/g" environments/prod/common/confi
 sed -i "s/%parse_apikey%/${parse_apikey}/g" environments/dev/common/config/main-local.php
 sed -i "s/%parse_apikey%/${parse_apikey}/g" environments/prod/common/config/main-local.php
 
-
+sed -i "s/%languages%/${languages}/g" common/config/main.php
 sed -i "s/%app_name%/${app_name}/g" common/config/main.php
 
 
