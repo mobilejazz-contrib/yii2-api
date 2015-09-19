@@ -48,5 +48,5 @@ composer install
 ./yii migrate --interactive=0 --migrationPath=@yii/rbac/migrations
 
 # Add oauth client
-mysql -uroot -p${mysql_app_password} -e "USE ${image_name}; DELETE FROM oauth_clients;";
-mysql -uroot -p${mysql_app_password} -e "USE ${image_name}; INSERT INTO oauth_clients (client_id, client_secret, redirect_uri, grant_types, scope, user_id) VALUES ('${oauth_client_name}', '${oauth_client_pass}', 'http://${image_name}', 'client_credentials password refresh_token', NULL, NULL);"
+mysql -uroot -p${mysql_root_password} -e "USE ${image_name}; DELETE FROM oauth_clients;";
+mysql -uroot -p${mysql_root_password} -e "USE ${image_name}; INSERT INTO oauth_clients (client_id, client_secret, redirect_uri, grant_types, scope, user_id) VALUES ('${oauth_client_name}', '${oauth_client_pass}', 'http://${image_name}', 'client_credentials password refresh_token', NULL, NULL);"

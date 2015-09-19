@@ -1,12 +1,15 @@
 FROM linode/lamp:latest
 
-RUN apt-get update
+RUN apt-get update		#20150919 Change the date if you add any new package as apt-get update might use cache and fail later
 
 # Install supervisor
 RUN apt-get install -y supervisor
 
-# Install additional modules
-RUN apt-get install -y adminer curl mcrypt php5-gd php5-dev php-pear php5-xdebug php5-mysql php5-curl
+# Install command line utils
+RUN apt-get install -y curl mcrypt git
+
+# Install PHP additional modules
+RUN apt-get install -y adminer php5-gd php5-dev php-pear php5-xdebug php5-mysql php5-curl
 
 # Instal composer
 RUN curl -sS https://getcomposer.org/installer | php
@@ -14,7 +17,7 @@ RUN mv composer.phar /usr/local/bin/composer
 
 # Setup xdebug
 RUN echo "xdebug.remote_enable=1" >> /etc/php5/mods-available/xdebug.ini
-RUN echo "xdebug.remote_autostart=0" >> /etc/php5/mods-available/xdebug.ini
+RUN echo "xdebug.remote_autostart=1" >> /etc/php5/mods-available/xdebug.ini
 RUN echo "xdebug.remote_connect_back=1" >> /etc/php5/mods-available/xdebug.ini
 RUN echo "xdebug.remote_port=9000" >> /etc/php5/mods-available/xdebug.ini
 
