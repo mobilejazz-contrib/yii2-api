@@ -38,13 +38,13 @@ return [
 		'notifier' => [
 			'class' => 'common\components\Notifier',
 		],
-		'bootstrap' => [
-			[
-				'class' => 'yii\filters\ContentNegotiator',
-				'languages' => [
+    ],
+	'bootstrap' => [
+		[
+			'class' => 'yii\filters\ContentNegotiator',
+			'languages' => [
 					%languages%
 				],
-			],
-		],
-    ],
+		]
+	],
 ];
