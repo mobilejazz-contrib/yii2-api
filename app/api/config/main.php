@@ -111,5 +111,16 @@
 				},
 			],
         ],
+		'bootstrap' => [
+			[
+				'class' => 'yii\filters\ContentNegotiator',
+				'formats' => [
+					'application/json' => Response::FORMAT_JSON,
+				],
+				'languages' => [
+					%languages%
+				],
+			],
+		],
         'params' => $params,
     ];
