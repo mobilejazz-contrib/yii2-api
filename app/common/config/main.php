@@ -35,10 +35,8 @@ return [
 				],
 			],
 		],
-		'mailer' => [
-			'class' => 'nickcv\mandrill\Mailer',
-			'apikey' => '%mandrill_api_key%',
-			'useMandrillTemplates' => true,
+		'notifier' => [
+			'class' => 'common\components\Notifier',
 		],
     ],
 ];

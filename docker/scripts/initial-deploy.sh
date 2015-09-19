@@ -4,32 +4,35 @@
 rm -rf /var/www/html
 ln -s /app/app /var/www/html
 
-app=$1
-password=$2
-apass=$3
-oauth_app=$4
-oauth_pass=$5
-mandrill=$6
-app_name=$7
+source /config
 
 
 # Create database
 mysql -uroot -p${password} -e "CREATE DATABASE ${app}"
 
 # Create user
-mysql -uroot -p${password} -e "GRANT ALL PRIVILEGES ON ${app}.* TO ${app}@localhost IDENTIFIED BY '${apass}'"
+mysql -uroot -p${password} -e "GRANT ALL PRIVILEGES ON ${database_name}.* TO ${database_name}@localhost IDENTIFIED BY '${mysql_app_password}'"
 
 # Go to app folder
 cd /app/app
 
 # Update config files
-sed -i "s/%app_name%/${app}/g" environments/dev/common/config/main-local.php 
-sed -i "s/%app_name%/${app}/g" environments/prod/common/config/main-local.php 
-sed -i "s/%app_password%/${apass}/g" environments/dev/common/config/main-local.php 
-sed -i "s/%app_password%/${mandrill}/g" common/config/main.php 
-sed -i "s/%app_name%/${app_name}/g" common/config/main.php 
+sed -i "s/%database_name%/${image_name}/g" environments/dev/common/config/main-local.php
+sed -i "s/%database_name%/${image_name}/g" environments/prod/common/config/main-local.php
+sed -i "s/%app_password%/${mysql_app_password}/g" environments/dev/common/config/main-local.php
+sed -i "s/%app_password%/${mysql_app_password}/g" environments/prod/common/config/main-local.php
+sed -i "s/%mandrill_key%/${mandrill_key}/g" environments/dev/common/config/main-local.php
+sed -i "s/%mandrill_key%/${mandrill_key}/g" environments/prod/common/config/main-local.php
+sed -i "s/%parse_appid%/${parse_appid}/g" environments/prod/common/config/main-local.php
+sed -i "s/%parse_appid%/${parse_appid}/g" environments/prod/common/config/main-local.php
+sed -i "s/%parse_masterkey%/${parse_masterkey}/g" environments/prod/common/config/main-local.php
+sed -i "s/%parse_masterkey%/${parse_masterkey}/g" environments/prod/common/config/main-local.php
+sed -i "s/%parse_apikey%/${parse_apikey}/g" environments/prod/common/config/main-local.php
+sed -i "s/%parse_apikey%/${parse_apikey}/g" environments/prod/common/config/main-local.php
 
-sed -i "s/%mandrill_api_key%/${apass}/g" environments/prod/common/config/main-local.php 
+
+sed -i "s/%app_name%/${app_name}/g" common/config/main.php
+
 
 # Install composer packages
 composer global require "fxp/composer-asset-plugin:~1.0.0"
@@ -46,4 +49,4 @@ composer install
 
 # Add oauth client
 mysql -uroot -p${password} -e "USE ${app}; DELETE FROM oauth_clients;";
-mysql -uroot -p${password} -e "USE ${app}; INSERT INTO oauth_clients (client_id, client_secret, redirect_uri, grant_types, scope, user_id) VALUES ('${oauth_app}', '${oauth_pass}', 'http://${app}', 'client_credentials password refresh_token', NULL, NULL);"
+mysql -uroot -p${password} -e "USE ${app}; INSERT INTO oauth_clients (client_id, client_secret, redirect_uri, grant_types, scope, user_id) VALUES ('${oauth_client_name}', '${oauth_client_pass}', 'http://${image_name}', 'client_credentials password refresh_token', NULL, NULL);"

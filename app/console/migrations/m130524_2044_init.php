@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m130524_201442_init extends Migration
+class m150919_0151_user_profile extends Migration
 {
     public function up()
     {
@@ -22,9 +22,10 @@ class m130524_201442_init extends Migration
             'name' => Schema::TYPE_STRING . ' NOT NULL',
 			'last_name' => Schema::TYPE_STRING . ' NOT NULL',
 			'role' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
+			'picture' => Schema::TYPE_STRING . ' NULL',
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
-            'created_at' => Schema::TYPE_TIMESTAMP,
-            'updated_at' => Schema::TYPE_TIMESTAMP,
+            'created_at' => Schema::TYPE_DATETIME . ' NULL',
+            'updated_at' => Schema::TYPE_DATETIME . ' NULL',
         ], $tableOptions);
     }
 

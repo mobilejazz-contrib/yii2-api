@@ -25,6 +25,9 @@ RUN a2enmod rewrite
 # Folder permissions
 RUN usermod -u 1000 www-data
 
+# Configuration file
+ADD conf/config /config
+
 # Apache configuration file
 ADD conf/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN ln -s /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/

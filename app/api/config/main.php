@@ -98,11 +98,23 @@
 							unset($response->data["line"]);
 						}
 
-						//Create a new structure
-						/*$response->data = [
-							'success' => $response->isSuccessful,
-							'data' => $response->data,
-						];*/
+						if (is_array($response->data[0]))
+						{
+							$message = '';
+							$data = $response->data;
+							foreach ($data as $d)
+							{
+								if (isset($d['message']))
+									$message .= $d['message'] . ' ';
+							}
+							$response->data = [
+								'message' => trim($message),
+								'errors' => $data,
+								'name' => $response->statusText,
+								'status' => $response->statusCode,
+								'code' => $response->exitStatus,
+							];
+						}
 					}
 				},
 			],

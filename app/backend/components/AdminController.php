@@ -33,14 +33,6 @@ class AdminController extends Controller
 						'actions' => ['index', 'view', 'create', 'update', 'delete'],
 						'roles' => ['admin'],
 					],
-					[
-						'allow' => true,
-						'actions' => ['index', 'view', 'create', 'update', 'delete'],
-						'matchCallback' => function ($rule, $action)
-						{
-							return $this->checkOwner($rule, $action);
-						},
-					],
 				],
 			],
 		];

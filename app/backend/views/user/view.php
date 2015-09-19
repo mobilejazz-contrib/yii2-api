@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
 			'name',
 			'last_name',
+			'picture',
             'password_reset_token',
 			[
 				'label' => Yii::t ('app', 'Role'),

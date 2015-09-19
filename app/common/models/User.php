@@ -18,6 +18,7 @@ use yii\web\IdentityInterface;
  * @property string $last_name
  * @property string $role
  * @property integer $status
+ * @property string $picture
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password password
@@ -48,7 +49,7 @@ class User extends TimeStampActiveRecord implements IdentityInterface, UserCrede
 	{
 		$scenarios = parent::scenarios();
 		$scenarios[self::SCENARIO_LOGIN] = ['email', 'password'];
-		$scenarios[self::SCENARIO_CREATE] = ['email', 'password', 'name'];
+		$scenarios[self::SCENARIO_CREATE] = ['email', 'password', 'name', 'last_name', 'picture'];
 		$scenarios[self::SCENARIO_UPDATE] = $scenarios['default'];
 		return $scenarios;
 	}
@@ -72,7 +73,7 @@ class User extends TimeStampActiveRecord implements IdentityInterface, UserCrede
 			[['email', 'password'], 'required', 'on' => self::SCENARIO_LOGIN ],
 
 
-			[['email', 'name', 'last_name', 'role', 'status', 'password'], 'safe'],
+			[['email', 'name', 'last_name', 'role', 'status', 'password', 'picture'], 'safe'],
 
 		];
     }

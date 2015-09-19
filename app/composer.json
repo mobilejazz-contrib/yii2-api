@@ -19,7 +19,9 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "nickcv/yii2-mandrill": "*",
+        "parse/php-sdk" : "1.1.*",
         "mobilejazz/yii2-oauth2-server": ">=2.0.0",
+        "schmunk42/yii2-giiant": "*",
         "bshaffer/oauth2-server-php": "v1.6"
     },
     "require-dev": {
