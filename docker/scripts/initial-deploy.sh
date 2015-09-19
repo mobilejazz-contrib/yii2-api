@@ -8,10 +8,10 @@ source /config
 
 
 # Create database
-mysql -uroot -p${password} -e "CREATE DATABASE ${app}"
+mysql -uroot -p${mysql_root_password} -e "CREATE DATABASE ${image_name}"
 
 # Create user
-mysql -uroot -p${password} -e "GRANT ALL PRIVILEGES ON ${database_name}.* TO ${database_name}@localhost IDENTIFIED BY '${mysql_app_password}'"
+mysql -uroot -p${mysql_root_password} -e "GRANT ALL PRIVILEGES ON ${image_name}.* TO ${image_name}@localhost IDENTIFIED BY '${mysql_app_password}'"
 
 # Go to app folder
 cd /app/app
@@ -21,13 +21,13 @@ sed -i "s/%database_name%/${image_name}/g" environments/dev/common/config/main-l
 sed -i "s/%database_name%/${image_name}/g" environments/prod/common/config/main-local.php
 sed -i "s/%app_password%/${mysql_app_password}/g" environments/dev/common/config/main-local.php
 sed -i "s/%app_password%/${mysql_app_password}/g" environments/prod/common/config/main-local.php
-sed -i "s/%mandrill_key%/${mandrill_key}/g" environments/dev/common/config/main-local.php
-sed -i "s/%mandrill_key%/${mandrill_key}/g" environments/prod/common/config/main-local.php
+sed -i "s/%mandrill_api_key%/${mandrill_api_key}/g" environments/dev/common/config/main-local.php
+sed -i "s/%mandrill_api_key%/${mandrill_api_key}/g" environments/prod/common/config/main-local.php
+sed -i "s/%parse_appid%/${parse_appid}/g" environments/dev/common/config/main-local.php
 sed -i "s/%parse_appid%/${parse_appid}/g" environments/prod/common/config/main-local.php
-sed -i "s/%parse_appid%/${parse_appid}/g" environments/prod/common/config/main-local.php
+sed -i "s/%parse_masterkey%/${parse_masterkey}/g" environments/dev/common/config/main-local.php
 sed -i "s/%parse_masterkey%/${parse_masterkey}/g" environments/prod/common/config/main-local.php
-sed -i "s/%parse_masterkey%/${parse_masterkey}/g" environments/prod/common/config/main-local.php
-sed -i "s/%parse_apikey%/${parse_apikey}/g" environments/prod/common/config/main-local.php
+sed -i "s/%parse_apikey%/${parse_apikey}/g" environments/dev/common/config/main-local.php
 sed -i "s/%parse_apikey%/${parse_apikey}/g" environments/prod/common/config/main-local.php
 
 

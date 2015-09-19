@@ -1,8 +1,9 @@
 #!/bin/bash
-source ./docker/config
+source ./docker/conf/config
 
 mkdir -p $1
 cp -rf . $1
+rm -rf $1/.git
 
 cd $1
 
@@ -17,8 +18,9 @@ docker run -d -v $PWD:/app -p 80:80 -p 3306:3306 --name $image_name $image_name
 sleep 10 #We wait some time for mysql to start
 docker exec -i -t $image_name mysqladmin -u root -pAdmin2015 password $mysql_password
 
+echo "docker exec -i -t ${image_name} /bin/bash" > docker/ssh
+chmod 700 docker/ssh
+
 #Deploy app
 docker exec -i -t $image_name /app/docker/scripts/initial-deploy.sh
 
-echo "docker exec -i -t ${image_name} /bin/bash" > docker/ssh
-chmod 700 docker/ssh
