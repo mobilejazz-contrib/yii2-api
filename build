@@ -23,4 +23,3 @@ chmod 700 docker/ssh
 
 #Deploy app
 docker exec -i -t $image_name /app/docker/scripts/initial-deploy.sh
-

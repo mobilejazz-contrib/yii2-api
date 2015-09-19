@@ -18,27 +18,33 @@ class TimeStampActiveRecord extends ActiveRecord
 	/**
 	 * @inheritdoc
 	 */
-	public function behaviors()
+	public function behaviors ()
 	{
 		return [
 			'timestamp' => [
-				'class' => TimestampBehavior::className(),
+				'class'      => TimestampBehavior::className (),
 				'attributes' => [
 					ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
 					ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
 				],
-				'value' => Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'))
+				'value'      => new yii\db\Expression('now()')
 			],
 		];
 	}
 
-	public function fields()
+	public function fields ()
 	{
-		$fields = parent::fields();
+		$fields = parent::fields ();
 
 		// remove updated_at field
 		unset($fields['updated_at']);
 
 		return $fields;
+	}
+
+	public function afterSave ($insert, $changedAttributes)
+	{
+		if ($insert)
+			$this->refresh ();
 	}
 }
