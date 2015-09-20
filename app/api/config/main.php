@@ -59,6 +59,7 @@
                 'showScriptName' => false,
                 'rules' => [
                     ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+					['class' => 'yii\rest\UrlRule', 'controller' => 'profile'],
 
 					'POST /users/reset-password' => 'user/reset-password',
 					'POST oauth2/<action:\w+>' => 'oauth2/default/<action>',
