@@ -6,7 +6,7 @@ return [
 			'dsn' => 'mysql:host=localhost;dbname=%database_name%',
 			'username' => '%database_name%',
 			'password' => '%app_password%',
-            'charset' => 'utf8',
+            'charset' => 'utf8mb4',
         ],
 		'mailer' => [
 			'class' => 'nickcv\mandrill\Mailer',

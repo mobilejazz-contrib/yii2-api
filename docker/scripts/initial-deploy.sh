@@ -8,7 +8,7 @@ source /config
 
 
 # Create database
-mysql -uroot -p${mysql_root_password} -e "CREATE DATABASE ${image_name}"
+mysql -uroot -p${mysql_root_password} -e "CREATE DATABASE ${image_name} CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci"
 
 # Create user
 mysql -uroot -p${mysql_root_password} -e "GRANT ALL PRIVILEGES ON ${image_name}.* TO ${image_name}@localhost IDENTIFIED BY '${mysql_app_password}'"

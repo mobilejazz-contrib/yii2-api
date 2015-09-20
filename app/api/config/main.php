@@ -59,9 +59,13 @@
                 'showScriptName' => false,
                 'rules' => [
                     ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+
 					'POST /users/reset-password' => 'user/reset-password',
 					'POST oauth2/<action:\w+>' => 'oauth2/default/<action>',
+
 					'GET me' => 'user/me',
+					'GET me/notifications' => 'user/notifications',
+					'POST me/notifications/read' => 'user/notificationsread',
                 ],
             ],
 			'urlManagerFrontEnd' => [

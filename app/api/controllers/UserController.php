@@ -81,5 +81,18 @@
 			return Yii::$app->user->getIdentity();
 		}
 
+		public function actionNotifications ()
+		{
+			$notifications = UserNotification::find()->where(['user_id' => Yii::$app->user->id])->orderBy(['created_at'=>SORT_DESC]);
+			return new ActiveDataProvider([
+											  'query' => $notifications
+										  ]);
+		}
+
+		public function actionNotificationsread ()
+		{
+			UserNotification::updateAll (['read_at' => new yii\db\Expression('NOW()')], ["user_id" => Yii::$app->user->id]);
+			return ["status"=>true];
+		}
 	}
 

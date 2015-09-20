@@ -20,6 +20,7 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  *
+ * @property \common\models\UserNotification[] $userNotifications
  * @property \common\models\UserProfile $userProfile
  */
 class User extends \common\components\TimeStampActiveRecord
@@ -65,6 +66,14 @@ class User extends \common\components\TimeStampActiveRecord
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserNotifications()
+    {
+        return $this->hasMany(\common\models\UserNotification::className(), ['user_id' => 'id']);
     }
 
     /**
