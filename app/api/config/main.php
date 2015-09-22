@@ -95,7 +95,7 @@
 							unset($response->data["line"]);
 						}
 
-						if (is_array($response->data[0]))
+						if (is_array($response->data) && isset($response->data[0]) && is_array($response->data[0]))
 						{
 							$message = '';
 							$data = $response->data;
