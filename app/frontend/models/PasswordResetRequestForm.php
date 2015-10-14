@@ -58,7 +58,6 @@
 					return \Yii::$app->mailer
 						->compose ('recover-password-'.\Yii::$app->language, $data)
 						->setGlobalMergeVars ($data)
-						->setFrom ([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
 						->setTo ($this->email)
 						->setSubject (\Yii::t('app','Password reset request'))
 						->enableAsync ()
