@@ -10,4 +10,11 @@ use \common\models\base\UserNotification as BaseUserNotification;
  */
 class UserNotification extends BaseUserNotification
 {
+    public function send ()
+    {
+        $data = json_decode($this->data);
+        \Yii::$app->pn->send2d ($this->getUser()->one()->username, $this->message, $data);
+        $this->sent_at = new Expression('NOW()');
+        $this->save();
+    }
 }

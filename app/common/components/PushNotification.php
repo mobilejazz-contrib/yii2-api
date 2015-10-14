@@ -27,7 +27,7 @@ class PushNotification extends Component
 		$this->_parse = ParseClient::initialize ($this->appid, $this->apikey, $this->masterkey);
 	}
 
-	public function send2c ($channel, $message, $object_id = null, $type = null, $badge = true, $date = null)
+	public function send2c ($channel, $message, $data = null, $badge = true, $date = null)
 	{
 		//Send Push notification
 		$pdata = array(
@@ -38,10 +38,8 @@ class PushNotification extends Component
 			]
 		);
 
-		if ($object_id)
-			$pdata["data"]["object_id"] = $object_id;
-		if ($type)
-			$pdata["data"]["type"] = $type;
+		if ($data)
+			$pdata["data"] = $data;
 		if ($badge)
 			$pdata["data"]["badge"] = "Increment";
 		if ($date)
@@ -52,7 +50,7 @@ class PushNotification extends Component
 		return $st;
 	}
 
-	public function send2d ($email, $message, $object_id = null, $type = null, $badge = true, $date = null)
+	public function send2d ($email, $message, $data = null, $badge = true, $date = null)
 	{
 		$query = new ParseQuery("ParseInstallation");
 		$query->equalTo("alias", $email);
@@ -66,10 +64,8 @@ class PushNotification extends Component
 			]
 		);
 
-		if ($object_id)
-			$pdata["data"]["object_id"] = $object_id;
-		if ($type)
-			$pdata["data"]["type"] = $type;
+		if ($data)
+			$pdata["data"] = $data;
 		if ($badge)
 			$pdata["data"]["badge"] = "Increment";
 		if ($date)
