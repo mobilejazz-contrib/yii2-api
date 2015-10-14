@@ -39,4 +39,11 @@ return [
 			'class' => 'common\components\Notifier',
 		],
     ],
+	'bootstrap' => [
+		[
+			'class' => 'yii\filters\ContentNegotiator',
+			'languages' => [
+				%languages%
+			],
+	],
 ];

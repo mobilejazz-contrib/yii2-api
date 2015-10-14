@@ -36,13 +36,5 @@ return [
 			],
 		],
     ],
-	'bootstrap' => [
-		[
-			'class' => 'yii\filters\ContentNegotiator',
-			'languages' => [
-				%languages%
-			],
-		],
-	],
     'params' => $params,
 ];
