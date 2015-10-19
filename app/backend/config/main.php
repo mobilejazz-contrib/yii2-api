@@ -30,5 +30,15 @@ return [
             'errorAction' => 'site/error',
         ],
     ],
+    'bootstrap' =>
+        [
+            [
+                'class' => 'yii\filters\ContentNegotiator',
+                'languages' =>
+                    [
+                        %languages%
+                    ],
+            ],
+        ],
     'params' => $params,
 ];

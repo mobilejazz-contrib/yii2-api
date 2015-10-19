@@ -122,6 +122,10 @@
 				'formats' => [
 					'application/json' => Response::FORMAT_JSON,
 				],
+                'languages' =>
+                    [
+                        %languages%
+                    ],
 			],
 		],
         'params' => $params,
