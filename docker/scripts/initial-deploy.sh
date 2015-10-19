@@ -39,7 +39,7 @@ sed -i "s/%app_name%/${app_name}/g" common/config/main.php
 
 
 # Install composer packages
-composer global require "fxp/composer-asset-plugin:~1.0.0"
+composer global require "fxp/composer-asset-plugin"
 composer update
 composer install
 
