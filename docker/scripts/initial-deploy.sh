@@ -58,7 +58,10 @@ mysql -uroot -p${mysql_root_password} -e "USE ${image_name}; INSERT INTO oauth_c
 
 # Update deploy scripts
 cd /app/deploy
+
 cp config.sample.php config.php
+sed -i "s/%environment%/${environment}/g" config.php
 sed -i "s/%branch%/${branch}/g" config.php
 sed -i "s/%app_name%/${app_name}/g" config.php
+
 echo "www-data ALL=(ALL) NOPASSWD: /app/deploy/deploy-api" >> /etc/sudoers
