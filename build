@@ -1,11 +1,13 @@
 #!/bin/bash
 source ./docker/conf/config
 
-mkdir -p $1
-cp -rf . $1
-rm -rf $1/.git
+if [ "$#" -e 1 ]; then
+	mkdir -p $1
+	cp -rf . $1
+	rm -rf $1/.git
 
-cd $1
+	cd $1
+fi
 
 #Build docker image
 docker build -t $image_name docker
@@ -14,8 +16,8 @@ docker build -t $image_name docker
 PWD=`pwd`
 docker run -d -v $PWD:/app -p 80:80 -p 3306:3306 --name $image_name $image_name
 
-# Change mysql password
-sleep 10 #We wait some time for mysql to start
+# Change mysql password (We wait some time for mysql to start)
+sleep 10
 docker exec -i -t $image_name mysqladmin -u root -pAdmin2015 password $mysql_root_password
 
 echo "docker exec -i -t ${image_name} /bin/bash" > docker/ssh

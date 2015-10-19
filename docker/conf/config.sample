@@ -1,4 +1,4 @@
-image_name=""
+image_name=""	#Only lowercase and numbers are allowed
 mysql_root_password=""
 mysql_app_password=""
 oauth_client_name=""
