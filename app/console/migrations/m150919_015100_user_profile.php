@@ -15,8 +15,8 @@ class m150919_015100_user_profile extends Migration
         $this->createTable('user_profile', [
             'id' => Schema::TYPE_PK,
             'about' => Schema::TYPE_STRING,
-            'created_at' => Schema::TYPE_DATETIME . ' NULL',
-            'updated_at' => Schema::TYPE_DATETIME . ' NULL',
+            'created_at' => Schema::TYPE_INTEGER . ' NULL',
+            'updated_at' => Schema::TYPE_INTEGER . ' NULL',
         ], $tableOptions);
 
 

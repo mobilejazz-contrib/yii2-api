@@ -24,8 +24,8 @@ class m130524_204400_init extends Migration
 			'role' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
 			'picture' => Schema::TYPE_STRING . ' NULL',
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
-            'created_at' => Schema::TYPE_DATETIME . ' NULL',
-            'updated_at' => Schema::TYPE_DATETIME . ' NULL',
+            'created_at' => Schema::TYPE_INTEGER . ' NULL',
+            'updated_at' => Schema::TYPE_INTEGER . ' NULL',
         ], $tableOptions);
     }
 

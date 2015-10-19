@@ -42,8 +42,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => Yii::t ('app', 'Status'),
 				'value' => $model->getStatus ()
 			],
-            'created_at',
-            'updated_at',
+            'created_at:date',
+            'updated_at:date',
         ],
     ]) ?>
 

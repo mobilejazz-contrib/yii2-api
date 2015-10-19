@@ -9,8 +9,8 @@ use Yii;
  *
  * @property integer $id
  * @property string $about
- * @property string $created_at
- * @property string $updated_at
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\User $id0
  */

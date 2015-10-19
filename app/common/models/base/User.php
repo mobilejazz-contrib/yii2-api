@@ -17,8 +17,8 @@ use Yii;
  * @property integer $role
  * @property string $picture
  * @property integer $status
- * @property string $created_at
- * @property string $updated_at
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\UserNotification[] $userNotifications
  * @property \common\models\UserProfile $userProfile

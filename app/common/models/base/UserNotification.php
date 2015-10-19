@@ -13,10 +13,10 @@ use Yii;
  * @property integer $item_id
  * @property string $message
  * @property string $data
- * @property string $created_at
- * @property string $updated_at
- * @property string $sent_at
- * @property string $read_at
+ * @property integer $created_at
+ * @property integer $updated_at
+ * @property integer $sent_at
+ * @property integer $read_at
  *
  * @property \common\models\User $user
  */

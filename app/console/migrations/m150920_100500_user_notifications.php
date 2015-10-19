@@ -19,10 +19,10 @@ class m150803_160000_user_notifications extends Migration
 			'item_id' => Schema::TYPE_INTEGER,
 			'message' => Schema::TYPE_STRING . ' NOT NULL',
 			'data' => Schema::TYPE_TEXT . ' NULL',
-            'created_at' => Schema::TYPE_TIMESTAMP,
-            'updated_at' => Schema::TYPE_TIMESTAMP,
-			'sent_at' => Schema::TYPE_TIMESTAMP,
-			'read_at' => Schema::TYPE_TIMESTAMP,
+            'created_at' => Schema::TYPE_INTEGER,
+            'updated_at' => Schema::TYPE_INTEGER,
+			'sent_at' => Schema::TYPE_INTEGER,
+			'read_at' => Schema::TYPE_INTEGER,
         ], $tableOptions);
 
 		$this->addForeignKey('user_notification_user_fk', 'user_notification', 'user_id', 'user', 'id', 'CASCADE', 'CASCADE');
