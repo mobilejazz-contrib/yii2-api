@@ -1,0 +1,44 @@
+#!/bin/bash
+
+source /app/app/docker/config/config;
+
+LocalFolder="/app"
+TestFolder="/app/api-tests"
+DeployFolder="/app/deploy"
+
+
+LOG=$DeployFolder."/deploy-api.log"
+
+#Save date to log file
+date
+
+MESSAGE="Deploy started on ($environment)"
+CONFIG="room_id=${HipchatRoom}&from=Server&color=yellow"
+curl -d $CONFIG --data-urlencode "message=${MESSAGE}" 'https://api.hipchat.com/v1/rooms/message?auth_token=02cf3748f88eeca0450a16b00ef9a9&format=json'
+
+#Pull latest changes
+cd $LocalFolder
+echo "Reset API repository changes..."
+git reset --hard HEAD
+echo "Update API code..."
+git pull
+
+echo "Update composer"
+cd app
+
+#Update docker
+composer self-update
+composer update
+
+echo "Update database"
+
+#Apply migrations
+./yii migrate --interactive=0
+
+MESSAGE="Deploy finished on ($1)"
+CONFIG="room_id=${hipchat_room}&from=Server&color=green"
+
+curl -d $CONFIG --data-urlencode "message=${MESSAGE}" 'https://api.hipchat.com/v1/rooms/message?auth_token=02cf3748f88eeca0450a16b00ef9a9&format=json'
+
+echo "Deploy finished"
+date

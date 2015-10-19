@@ -1,6 +1,6 @@
 FROM linode/lamp:latest
 
-RUN apt-get update		#20150919 Change the date if you add any new package as apt-get update might use cache and fail later
+RUN apt-get update		#20151019 Change the date if you add any new package as apt-get update might use cache and fail later
 
 # Install supervisor
 RUN apt-get install -y supervisor
@@ -9,7 +9,7 @@ RUN apt-get install -y supervisor
 RUN apt-get install -y curl mcrypt git
 
 # Install PHP additional modules
-RUN apt-get install -y adminer php5-gd php5-dev php-pear php5-xdebug php5-mysql php5-curl
+RUN apt-get install -y adminer php5-gd php5-dev php-pear php5-xdebug php5-mysql php5-curl aha
 
 # Instal composer
 RUN curl -sS https://getcomposer.org/installer | php

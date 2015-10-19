@@ -44,7 +44,7 @@ composer update
 composer install
 
 # Init yii
-./init --env=Development --overwrite=All
+./init --env=${environment} --overwrite=All
 
 # Yii migate
 ./yii migrate --interactive=0
@@ -54,3 +54,11 @@ composer install
 # Add oauth client
 mysql -uroot -p${mysql_root_password} -e "USE ${image_name}; DELETE FROM oauth_clients;";
 mysql -uroot -p${mysql_root_password} -e "USE ${image_name}; INSERT INTO oauth_clients (client_id, client_secret, redirect_uri, grant_types, scope, user_id) VALUES ('${oauth_client_name}', '${oauth_client_pass}', 'http://${image_name}', 'client_credentials password refresh_token', NULL, NULL);"
+
+
+# Update deploy scripts
+cd /app/deploy
+cp config.sample.php config.php
+sed -i "s/%branch%/${branch}/g" config.php
+sed -i "s/%app_name%/${app_name}/g" config.php
+echo "www-data ALL=(ALL) NOPASSWD: /app/deploy/deploy-api" >> /etc/sudoers
