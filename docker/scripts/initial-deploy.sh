@@ -64,4 +64,4 @@ sed -i "s/%environment%/$1/g" config.php
 sed -i "s/%branch%/$2/g" config.php
 sed -i "s/%app_name%/${app_name}/g" config.php
 
-echo "www-data ALL=(ALL) NOPASSWD: /app/deploy/deploy-api" >> /etc/sudoers
+echo "www-data ALL=(ALL) NOPASSWD: /app/deploy/deploy" >> /etc/sudoers
