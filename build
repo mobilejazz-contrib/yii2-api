@@ -10,16 +10,16 @@ if [ "$#" -lt 2 ]; then
 fi
 
 if [ "$#" == 3 ]; then
-	mkdir -p $1
-	cp -rf . $1
-	rm -rf $1/.git
+	mkdir -p $3
+	cp -rf . $3
+	rm -rf $3/.git
 
-	rm -rf $1/docker/conf/.gitignore
-	rm -rf $1/docker/conf/config.sample
+	rm -rf $3/docker/conf/.gitignore
+	rm -rf $3/docker/conf/config.sample
 
-	cp -f $1/Readme.project.md $1/Readme.md
+	cp -f $3/Readme.project.md $3/Readme.md
 
-	cd $1
+	cd $3
 fi
 
 #Build docker image

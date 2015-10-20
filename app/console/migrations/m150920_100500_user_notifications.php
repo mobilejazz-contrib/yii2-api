@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m150803_160000_user_notifications extends Migration
+class m150920_100500_user_notifications extends Migration
 {
     public function up()
     {
