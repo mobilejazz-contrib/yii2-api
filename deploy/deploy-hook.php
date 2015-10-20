@@ -2,9 +2,9 @@
 
 	include "config.php";
 
-	$deploy_script = '/app/deploy/deploy-api ' . $env;
-	$log_file = '/app/deploy/deploy-api.log';
-	$pid_file = '/app/deploy/deploy-api.pid';
+	$deploy_script = '/app/deploy/deploy ' . $env;
+	$log_file = '/app/deploy/deploy.log';
+	$pid_file = '/app/deploy/deploy.pid';
 
 	$update = false;
 

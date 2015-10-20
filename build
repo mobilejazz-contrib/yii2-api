@@ -1,13 +1,23 @@
 #!/bin/bash
 source ./docker/conf/config
 
-if [ "$#" == 1 ]; then
+if [ "$#" -lt 2 ]; then
+    echo "Illegal number of parameters. You should use:"
+    echo "  ./build <environment> <branch> [folder]"
+    echo "  <environment> can be: Development or Production"
+    echo "  [folder] is optional, usually you don't need to provide it if you already have an existing repository"
+    exit
+fi
+
+if [ "$#" == 3 ]; then
 	mkdir -p $1
 	cp -rf . $1
 	rm -rf $1/.git
 
 	rm -rf $1/docker/conf/.gitignore
 	rm -rf $1/docker/conf/config.sample
+
+	cp -f $1/Readme.project.md $1/Readme.md
 
 	cd $1
 fi
@@ -27,4 +37,4 @@ echo "docker exec -i -t ${image_name} /bin/bash" > docker/ssh
 chmod 700 docker/ssh
 
 #Deploy app
-docker exec -i -t $image_name /app/docker/scripts/initial-deploy.sh
+docker exec -i -t $image_name /app/docker/scripts/initial-deploy.sh $1 $2

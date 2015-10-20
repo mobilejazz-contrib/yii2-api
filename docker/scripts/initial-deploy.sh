@@ -44,7 +44,7 @@ composer update
 composer install
 
 # Init yii
-./init --env=${environment} --overwrite=All
+./init --env=$1 --overwrite=All
 
 # Yii migate
 ./yii migrate --interactive=0
@@ -60,8 +60,8 @@ mysql -uroot -p${mysql_root_password} -e "USE ${image_name}; INSERT INTO oauth_c
 cd /app/deploy
 
 cp config.sample.php config.php
-sed -i "s/%environment%/${environment}/g" config.php
-sed -i "s/%branch%/${branch}/g" config.php
+sed -i "s/%environment%/$1/g" config.php
+sed -i "s/%branch%/$2/g" config.php
 sed -i "s/%app_name%/${app_name}/g" config.php
 
 echo "www-data ALL=(ALL) NOPASSWD: /app/deploy/deploy-api" >> /etc/sudoers
