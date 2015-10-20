@@ -18,6 +18,7 @@ if [ "$#" == 3 ]; then
 	rm -rf $3/docker/conf/config.sample
 
 	cp -f $3/Readme.project.md $3/Readme.md
+	rm -rf $3/Readme.project.md
 
 	cd $3
 fi
