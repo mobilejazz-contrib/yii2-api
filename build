@@ -1,10 +1,13 @@
 #!/bin/bash
 source ./docker/conf/config
 
-if [ "$#" -e 1 ]; then
+if [ "$#" == 1 ]; then
 	mkdir -p $1
 	cp -rf . $1
 	rm -rf $1/.git
+
+	rm -rf $1/docker/conf/.gitignore
+	rm -rf $1/docker/conf/config.sample
 
 	cd $1
 fi
