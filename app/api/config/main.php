@@ -89,10 +89,14 @@
 						//Remove some useless data
 						if (!YII_DEBUG)
 						{
-							unset($response->data["stack-trace"]);
-							unset($response->data["type"]);
-							unset($response->data["file"]);
-							unset($response->data["line"]);
+                            if (isset($response->data["stack-trace"]))
+                                unset($response->data["stack-trace"]);
+                            if (isset($response->data["type"]))
+                                unset($response->data["type"]);
+                            if (isset($response->data["file"]))
+                                unset($response->data["file"]);
+                            if (isset($response->data["line"]))
+                                unset($response->data["line"]);
 						}
 
 						if (is_array($response->data) && isset($response->data[0]) && is_array($response->data[0]))
