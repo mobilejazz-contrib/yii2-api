@@ -34,3 +34,10 @@ The project has the following features:
 * Adminer installed (`http://<docker_ip>/adminer`) *Note: Mysql root access is disabled*
 * Gii is available here: `http://<docker_ip>/admin/gii`
 * Push Notifications support via Parse
+
+## Admin user
+
+The site comes with a default admin user:
+
+ 	admin@example.com
+ 	admin

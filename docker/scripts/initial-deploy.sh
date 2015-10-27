@@ -48,8 +48,6 @@ composer install
 
 # Yii migate
 ./yii migrate --interactive=0
-./yii migrate --interactive=0 --migrationPath=@vendor/mobilejazz/yii2-oauth2-server/migrations
-./yii migrate --interactive=0 --migrationPath=@yii/rbac/migrations
 
 # Add oauth client
 mysql -uroot -p${mysql_root_password} -e "USE ${image_name}; DELETE FROM oauth_clients;";
