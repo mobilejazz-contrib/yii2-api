@@ -300,8 +300,8 @@ class IdentityUser extends \common\models\base\User implements IdentityInterface
 	public static function status()
 	{
 		return array(
-			User::STATUS_DELETED => Yii::t('app', "Deleted"),
-			User::STATUS_ACTIVE => Yii::t('app', "Active")
+			IdentityUser::STATUS_DELETED => Yii::t('app', "Deleted"),
+			IdentityUser::STATUS_ACTIVE => Yii::t('app', "Active")
 		);
 	}
 
@@ -309,10 +309,10 @@ class IdentityUser extends \common\models\base\User implements IdentityInterface
 	{
 		switch ($this->status)
 		{
-			case User::STATUS_DELETED:
+			case IdentityUser::STATUS_DELETED:
 				return Yii::t('app', "Deleted");
 				break;
-			case User::STATUS_ACTIVE:
+			case IdentityUser::STATUS_ACTIVE:
 				return Yii::t('app', "Active");
 				break;
 		}

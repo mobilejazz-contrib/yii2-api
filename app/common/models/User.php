@@ -2,6 +2,7 @@
 namespace common\models;
 
 use common\components\TimeStampActiveRecord;
+use common\models\base\IdentityUser;
 use OAuth2\Storage\UserCredentialsInterface;
 use Yii;
 use yii\web\IdentityInterface;
@@ -59,8 +60,8 @@ class User extends \common\models\base\IdentityUser
 	public static function roles()
 	{
 		return array(
-			User::ROLE_USER => Yii::t('app', "User"),
-			User::ROLE_ADMIN => Yii::t('app', "Admin"),
+			IdentityUser::ROLE_USER => Yii::t('app', "User"),
+			IdentityUser::ROLE_ADMIN => Yii::t('app', "Admin"),
 		);
 	}
 
@@ -68,10 +69,10 @@ class User extends \common\models\base\IdentityUser
 	{
 		switch ($this->role)
 		{
-			case User::ROLE_USER:
+			case IdentityUser::ROLE_USER:
 				return Yii::t('app', "User");
 				break;
-			case User::ROLE_ADMIN:
+			case IdentityUser::ROLE_ADMIN:
 				return Yii::t('app', "Admin");
 				break;
 		}
