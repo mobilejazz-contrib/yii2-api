@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $email
+ * @property string $username
  * @property string $auth_key
  * @property string $password_hash
  * @property string $password_reset_token
@@ -42,7 +43,7 @@ class User extends \common\components\TimeStampActiveRecord
             [['email', 'auth_key', 'password_hash', 'name', 'last_name'], 'required'],
             [['role', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['email', 'password_hash', 'password_reset_token', 'name', 'last_name', 'picture'], 'string', 'max' => 255],
+            [['email', 'password_hash', 'password_reset_token', 'name', 'last_name', 'picture', 'username'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32]
         ];
     }
@@ -55,6 +56,7 @@ class User extends \common\components\TimeStampActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'email' => Yii::t('app', 'Email'),
+            'username' => Yii::t('app', 'Username'),
             'auth_key' => Yii::t('app', 'Auth Key'),
             'password_hash' => Yii::t('app', 'Password Hash'),
             'password_reset_token' => Yii::t('app', 'Password Reset Token'),

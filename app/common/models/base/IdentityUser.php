@@ -125,6 +125,17 @@ class IdentityUser extends \common\models\base\User implements IdentityInterface
         return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE]);
     }
 
+	/**
+	 * Finds user by username
+	 *
+	 * @param string $email
+	 * @return static|null
+	 */
+	public static function findByUsername($username)
+	{
+		return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+	}
+
     /**
      * Finds user by password reset token
      *
@@ -245,7 +256,11 @@ class IdentityUser extends \common\models\base\User implements IdentityInterface
 		$user = $this->findByEmail($username);
 		if(is_null($user))
 		{
-			return false;
+			$user = $this->findByUsername($username);
+			if(is_null($user))
+			{
+				return false;
+			}
 		}
 
 		$crypted = $user->password_hash;
@@ -267,6 +282,8 @@ class IdentityUser extends \common\models\base\User implements IdentityInterface
 	public function getUserDetails($username)
 	{
 		$user = $this->findByEmail($username);
+		if(is_null($user))
+			$user = $this->findByUsername($username);
 		return ['scope'=>'','user_id'=>$user->id];
 	}
 
