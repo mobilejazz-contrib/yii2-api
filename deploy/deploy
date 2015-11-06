@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /app/app/docker/config/config;
+source /app/docker/conf/config;
 
 LocalFolder="/app"
 DeployFolder="/app/deploy"
