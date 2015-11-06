@@ -13,6 +13,15 @@ To setup the project you should run the following script
 
 This script will generate a Docker machine with Ubuntu, MySQL and all the configuration needed to run the project.
 
+### Server deployment
+
+In case you want to deploy the project on a server without using Docker, there's a script that does all the setup needed to run it.
+You can copy it to the server and run it to deploy the project (it does the git clone). The script files is located in:
+
+	docker/scripts/setup-server.sh
+
+*Note: This script requires apache2 and mysql already installed on the server*
+
 ## Project Overview
 
 The project has the following features:
