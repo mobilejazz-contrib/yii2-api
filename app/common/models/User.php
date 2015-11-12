@@ -12,7 +12,7 @@ use yii\web\IdentityInterface;
  *
  * @property string $password password
  */
-class User extends \common\models\base\IdentityUser
+class User extends \common\models\base\User
 {
 	public $password;
 
@@ -29,29 +29,40 @@ class User extends \common\models\base\IdentityUser
 		return $scenarios;
 	}
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+	public function rules ()
+	{
+		$rules = parent::rules ();
 
-			['email', 'filter', 'filter' => 'trim'],
-			['email', 'email'],
-			['email', 'unique', 'targetClass' => '\common\models\User', 'message' => Yii::t('app','This email address has already been taken.')],
+		$rules_new = [
+				['status', 'default', 'value' => self::STATUS_ACTIVE],
+				['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
 
-			['password', 'string', 'min' => 6],
+				['email', 'filter', 'filter' => 'trim'],
+				['email', 'email'],
 
-			[['email', 'name', 'password'], 'required', 'on' => self::SCENARIO_CREATE ],
-			[['email', 'password'], 'required', 'on' => self::SCENARIO_LOGIN ],
+				['email',
+				 'unique',
+				 'targetClass' => '\common\models\User',
+				 'message'     => Yii::t ('app', 'This email address has already been taken.')
+				],
+				[
+						'username',
+						'unique',
+						'targetClass' => '\common\models\User',
+						'message'     => Yii::t ('app', 'This username has already been taken.')
+				],
 
+				['password', 'string', 'min' => 6],
 
-			[['email', 'name', 'last_name', 'role', 'status', 'password', 'picture'], 'safe'],
+				[['username', 'password'], 'required', 'on' => self::SCENARIO_CREATE],
+				[['username', 'password'], 'required', 'on' => self::SCENARIO_LOGIN],
 
+				[['email', 'name', 'last_name', 'role', 'status', 'password', 'picture'], 'safe'],
 		];
-    }
+
+
+		return array_merge ($rules, $rules_new);
+	}
 
 
 	/**

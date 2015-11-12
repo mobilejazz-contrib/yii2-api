@@ -24,7 +24,7 @@ use Yii;
  * @property \common\models\UserNotification[] $userNotifications
  * @property \common\models\UserProfile $userProfile
  */
-class User extends \common\components\TimeStampActiveRecord
+class User extends IdentityUser
 {
     /**
      * @inheritdoc

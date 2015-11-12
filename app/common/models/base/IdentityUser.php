@@ -1,6 +1,7 @@
 <?php
 namespace common\models\base;
 
+use common\components\TimeStampActiveRecord;
 use OAuth2\Storage\UserCredentialsInterface;
 use Yii;
 use yii\web\IdentityInterface;
@@ -10,13 +11,14 @@ use yii\web\IdentityInterface;
  *
  * @property string $password password
  */
-class IdentityUser extends \common\models\base\User implements IdentityInterface, UserCredentialsInterface
+class IdentityUser extends TimeStampActiveRecord implements IdentityInterface, UserCredentialsInterface
 {
 	const ROLE_USER = 10;
 	const ROLE_ADMIN = 20;
 
 	const STATUS_DELETED = 0;
 	const STATUS_ACTIVE = 10;
+
 
 	public function beforeSave($insert)
 	{
@@ -47,7 +49,7 @@ class IdentityUser extends \common\models\base\User implements IdentityInterface
 
 		switch($this->role)
 		{
-			case User::ROLE_ADMIN:
+			case IdentityUser::ROLE_ADMIN:
 				$role = $auth->getRole('admin');
 				if (!$role)
 				{
@@ -57,7 +59,7 @@ class IdentityUser extends \common\models\base\User implements IdentityInterface
 				$auth->revokeAll($this->id);
 				$auth->assign($role, $this->id);
 				break;
-			case User::ROLE_USER:
+			case IdentityUser::ROLE_USER:
 				$role = $auth->getRole('user');
 				if (!$role)
 				{
