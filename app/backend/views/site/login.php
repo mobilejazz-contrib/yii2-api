@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
 
-$this->title                   = 'Login';
+$this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="login-box">
@@ -23,13 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'password')->passwordInput() ?>
             <?= $form->field($model, 'rememberMe')->checkbox([ 'class' => 'simple' ]) ?>
         </div>
-        <div class="footer">
-            <?php echo Html::submitButton(Yii::t('backend', 'Sign me in'),
-                [
-                    'class' => 'btn btn-primary btn-flat btn-block',
-                    'name'  => 'login-button',
-                ]) ?>
-        </div>
+        <?php echo Html::submitButton(Yii::t('backend', 'Sign me in'),
+            [
+                'class' => 'btn btn-primary btn-flat btn-block',
+                'name' => 'login-button',
+            ]) ?>
         <?php ActiveForm::end(); ?>
 
     </div>

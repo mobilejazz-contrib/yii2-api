@@ -35,6 +35,7 @@ class SiteController extends Controller
         }
         else
         {
+            $this->layout = 'login';
             return $this->render('login',
                 [
                     'model' => $model,
