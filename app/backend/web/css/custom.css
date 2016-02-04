@@ -1,0 +1,182 @@
+/** Created by polbatllo */
+/* line 3, ../sass/custom.scss */
+html,
+body {
+  height: 100%;
+}
+
+/* line 8, ../sass/custom.scss */
+.wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+}
+
+/* line 15, ../sass/custom.scss */
+.wrap > .container {
+  padding: 70px 15px 20px;
+}
+
+/* line 19, ../sass/custom.scss */
+.footer {
+  height: 60px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+/* line 26, ../sass/custom.scss */
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+
+/* line 31, ../sass/custom.scss */
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* line 36, ../sass/custom.scss */
+.not-set {
+  color: #c55;
+  font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+/* line 42, ../sass/custom.scss */
+a.asc:after, a.desc:after {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  padding-left: 5px;
+}
+
+/* line 53, ../sass/custom.scss */
+a.asc:after {
+  content: "\e151";
+}
+
+/* line 58, ../sass/custom.scss */
+a.desc:after {
+  content: "\e152";
+}
+
+/* line 63, ../sass/custom.scss */
+.sort-numerical a.asc:after {
+  content: "\e153";
+}
+
+/* line 67, ../sass/custom.scss */
+.sort-numerical a.desc:after {
+  content: "\e154";
+}
+
+/* line 71, ../sass/custom.scss */
+.sort-ordinal a.asc:after {
+  content: "\e155";
+}
+
+/* line 75, ../sass/custom.scss */
+.sort-ordinal a.desc:after {
+  content: "\e156";
+}
+
+/* line 79, ../sass/custom.scss */
+.grid-view th {
+  white-space: nowrap;
+}
+
+/* line 83, ../sass/custom.scss */
+.hint-block {
+  display: block;
+  margin-top: 5px;
+  color: #999;
+}
+
+/* line 89, ../sass/custom.scss */
+.error-summary {
+  color: #a94442;
+  background: #fdf7f7;
+  border-left: 3px solid #eed3d7;
+  padding: 10px 20px;
+  margin: 0 0 15px 0;
+}
+
+/**
+ * Additions by Adam Smith
+ */
+/* Toggles */
+/* line 103, ../sass/custom.scss */
+.fa-caret-up[aria-expanded="false"]:before {
+  content: '\f0d7';
+}
+
+/* Dashboard icon spacing */
+/* line 110, ../sass/custom.scss */
+.dashboard-icons li:not(:last-child) {
+  margin-bottom: 5px;
+}
+/* line 113, ../sass/custom.scss */
+.dashboard-icons .fa {
+  color: #545454;
+  margin-right: 5px;
+}
+
+/* line 119, ../sass/custom.scss */
+.icon-margin {
+  margin-right: 5px;
+}
+
+/* Might need some conditions for rtl languages */
+/* line 125, ../sass/custom.scss */
+html[dir="rtl"] .icon-margin {
+  margin-right: 0;
+  margin-left: 5px;
+}
+
+/* line 130, ../sass/custom.scss */
+.pagination-fix {
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* line 135, ../sass/custom.scss */
+.pagination-label {
+  display: inline;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+/* line 141, ../sass/custom.scss */
+.add-top-margin {
+  margin-top: 20px;
+}
+
+/* line 145, ../sass/custom.scss */
+.add-bottom-margin {
+  margin-bottom: 20px;
+}
+
+/* line 150, ../sass/custom.scss */
+.content-header > .breadcrumb {
+  float: none;
+  background: transparent;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  padding: 0 5px 7px 5px;
+  position: inherit;
+  border-radius: 2px;
+}
+
+/* line 161, ../sass/custom.scss */
+.box.affix {
+  position: fixed;
+  top: 60px;
+}

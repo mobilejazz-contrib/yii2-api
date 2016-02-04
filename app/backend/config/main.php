@@ -11,7 +11,12 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'i18n'        => [
+            'class'        => 'backend\modules\i18n\Module',
+            'defaultRoute' => 'i18n-message/index',
+        ],
+    ],
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
@@ -40,5 +45,9 @@ return [
                     ],
             ],
         ],
+    'as locale'           => [
+        'class'                   => 'common\behaviors\LocaleBehavior',
+        'enablePreferredLanguage' => true,
+    ],
     'params' => $params,
 ];

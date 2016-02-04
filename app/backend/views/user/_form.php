@@ -1,6 +1,7 @@
 <?php
 
-use yii\helpers\Html;
+use backend\widgets\Submitter;
+use common\models\User;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -12,20 +13,22 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput([ 'maxlength' => true ]) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'last_name')->textInput([ 'maxlength' => true ]) ?>
 
-    <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput([ 'maxlength' => true ]) ?>
 
-	<?= $form->field ($model, 'role')->dropDownList (\common\models\User::roles ()) ?>
+    <?= $form->field($model, 'password')->passwordInput([ 'maxlength' => true ]) ?>
 
-	<?= $form->field ($model, 'status')->dropDownList (\common\models\User::status ()) ?>
+    <?= $form->field($model, 'role')->dropDownList(User::roles()) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+    <?= $form->field($model, 'status')->dropDownList(User::status()) ?>
 
+    <?= Submitter::widget([
+        'model'     => $model,
+        'returnUrl' => '/admin/user',
+    ]) ?>
     <?php ActiveForm::end(); ?>
 
 </div>

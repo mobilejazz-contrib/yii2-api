@@ -11,7 +11,7 @@ use yii\web\IdentityInterface;
  *
  * @property string $password password
  */
-class IdentityUser extends TimeStampActiveRecord implements IdentityInterface, UserCredentialsInterface
+class IdentityUser extends User implements IdentityInterface, UserCredentialsInterface
 {
 	const ROLE_USER = 10;
 	const ROLE_ADMIN = 20;

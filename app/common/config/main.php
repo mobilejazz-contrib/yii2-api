@@ -17,21 +17,17 @@ return [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['user'],
         ],
-        'i18n' => [
+        'i18n'        => [
             'translations' => [
-                'app*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@common/messages',
-                    'fileMap' => [
-                        'app' => 'app.php',
-                    ],
-                ],
-                'api*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@common/messages',
-                    'fileMap' => [
-                        'api' => 'api.php',
-                    ],
+                '*' => [
+                    'class'                 => 'yii\i18n\DbMessageSource',
+                    'forceTranslation'      => true,
+                    'sourceLanguage'        => 'en',
+                    'sourceMessageTable'    => '{{%i18n_source_message}}',
+                    'messageTable'          => '{{%i18n_message}}',
+                    //'enableCaching' => true,
+                    //'cachingDuration' => 3600,
+                    'on missingTranslation' => [ '\backend\modules\i18n\Module', 'missingTranslation' ],
                 ],
             ],
         ],

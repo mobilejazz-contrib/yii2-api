@@ -2,29 +2,31 @@
 
 namespace common\models\base;
 
+use common\components\TimeStampActiveRecord;
+use common\models\UserNotification;
+use common\models\UserProfile;
 use Yii;
 
 /**
  * This is the base-model class for table "user".
  *
- * @property integer $id
- * @property string $email
- * @property string $username
- * @property string $auth_key
- * @property string $password_hash
- * @property string $password_reset_token
- * @property string $name
- * @property string $last_name
- * @property integer $role
- * @property string $picture
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
+ * @property integer            $id
+ * @property string             $email
+ * @property string             $auth_key
+ * @property string             $password_hash
+ * @property string             $password_reset_token
+ * @property string             $name
+ * @property string             $last_name
+ * @property integer            $role
+ * @property string             $picture
+ * @property integer            $status
+ * @property integer            $created_at
+ * @property integer            $updated_at
  *
- * @property \common\models\UserNotification[] $userNotifications
- * @property \common\models\UserProfile $userProfile
+ * @property UserNotification[] $userNotifications
+ * @property UserProfile        $userProfile
  */
-class User extends IdentityUser
+class User extends TimeStampActiveRecord
 {
     /**
      * @inheritdoc
@@ -40,11 +42,11 @@ class User extends IdentityUser
     public function rules()
     {
         return [
-            [['email', 'auth_key', 'password_hash', 'name', 'last_name'], 'required'],
-            [['role', 'status'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['email', 'password_hash', 'password_reset_token', 'name', 'last_name', 'picture', 'username'], 'string', 'max' => 255],
-            [['auth_key'], 'string', 'max' => 32]
+            [ [ 'email', 'auth_key', 'password_hash', 'name', 'last_name' ], 'required' ],
+            [ [ 'role', 'status' ], 'integer' ],
+            [ [ 'created_at', 'updated_at' ], 'safe' ],
+            [ [ 'email', 'password_hash', 'password_reset_token', 'name', 'last_name', 'picture' ], 'string', 'max' => 255 ],
+            [ [ 'auth_key' ], 'string', 'max' => 32 ],
         ];
     }
 
@@ -54,19 +56,18 @@ class User extends IdentityUser
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'email' => Yii::t('app', 'Email'),
-            'username' => Yii::t('app', 'Username'),
-            'auth_key' => Yii::t('app', 'Auth Key'),
-            'password_hash' => Yii::t('app', 'Password Hash'),
+            'id'                   => Yii::t('app', 'ID'),
+            'email'                => Yii::t('app', 'Email'),
+            'auth_key'             => Yii::t('app', 'Auth Key'),
+            'password_hash'        => Yii::t('app', 'Password Hash'),
             'password_reset_token' => Yii::t('app', 'Password Reset Token'),
-            'name' => Yii::t('app', 'Name'),
-            'last_name' => Yii::t('app', 'Last Name'),
-            'role' => Yii::t('app', 'Role'),
-            'picture' => Yii::t('app', 'Picture'),
-            'status' => Yii::t('app', 'Status'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
+            'name'                 => Yii::t('app', 'Name'),
+            'last_name'            => Yii::t('app', 'Last Name'),
+            'role'                 => Yii::t('app', 'Role'),
+            'picture'              => Yii::t('app', 'Picture'),
+            'status'               => Yii::t('app', 'Status'),
+            'created_at'           => Yii::t('app', 'Created At'),
+            'updated_at'           => Yii::t('app', 'Updated At'),
         ];
     }
 
@@ -75,7 +76,7 @@ class User extends IdentityUser
      */
     public function getUserNotifications()
     {
-        return $this->hasMany(\common\models\UserNotification::className(), ['user_id' => 'id']);
+        return $this->hasMany(UserNotification::className(), [ 'user_id' => 'id' ]);
     }
 
     /**
@@ -83,6 +84,6 @@ class User extends IdentityUser
      */
     public function getUserProfile()
     {
-        return $this->hasOne(\common\models\UserProfile::className(), ['id' => 'id']);
+        return $this->hasOne(UserProfile::className(), [ 'id' => 'id' ]);
     }
 }
